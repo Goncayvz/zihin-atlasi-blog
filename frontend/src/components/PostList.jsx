@@ -107,14 +107,14 @@ export default function PostList({
 
                   <button
                     onClick={() => startEdit(post)}
-                    className="opacity-0 group-hover:opacity-100 hover:text-blue-500 transition"
+                    className="opacity-100 sm:opacity-0 sm:group-hover:opacity-100 hover:text-blue-500 transition"
                     title="Düzenle"
                   >
                     ✏️
                   </button>
                   <button
                     onClick={() => onDelete(post.id)}
-                    className="opacity-0 group-hover:opacity-100 hover:text-red-500 transition"
+                    className="opacity-100 sm:opacity-0 sm:group-hover:opacity-100 hover:text-red-500 transition"
                     title="Sil"
                   >
                     🗑️
@@ -142,4 +142,3 @@ export default function PostList({
     </div>
   )
 }
-

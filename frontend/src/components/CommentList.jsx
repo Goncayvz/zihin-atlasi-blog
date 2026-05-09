@@ -79,7 +79,7 @@ export default function CommentList({ comments, onEdit, onDelete }) {
                 </div>
               </div>
               <span className="text-xs text-gray-400">
-                {new Date(comment.createdAt).toLocaleString('tr-TR')}
+                {new Date(comment.createdAt || comment.created_at).toLocaleString('tr-TR')}
               </span>
             </>
           )}

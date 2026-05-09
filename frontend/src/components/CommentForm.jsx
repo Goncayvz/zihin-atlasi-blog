@@ -23,7 +23,7 @@ export default function CommentForm({ onCommentSubmit }) {
           + Yorum Ekle
         </button>
       ) : (
-        <form onSubmit={handleSubmit} className="flex gap-2 mt-2">
+        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2 mt-2">
           <input 
             value={comment}
             onChange={(e) => setComment(e.target.value)}

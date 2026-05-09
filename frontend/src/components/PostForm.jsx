@@ -57,7 +57,7 @@ export default function PostForm({ onPostSubmit, onCategoryChange }) {
             setIsOpen(true)
             if (onCategoryChange) onCategoryChange(category)
           }}
-          className="flex items-center gap-2 text-purple-600 hover:text-purple-800 font-medium transition"
+          className="flex items-center gap-2 text-purple-600 hover:text-purple-800 font-medium transition text-sm sm:text-base"
         >
           <span className="text-2xl">🖊️</span>
           <span>Bugün ne paylaşmak istersiniz?</span>
@@ -82,7 +82,7 @@ export default function PostForm({ onPostSubmit, onCategoryChange }) {
           
           <div className="mt-3 relative z-10">
             <label className="text-sm text-purple-700 font-medium mb-2 block">Kategori seçin:</label>
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {KATEGORILER.map(kat => (
                 <button
                   key={kat.id}
@@ -103,7 +103,7 @@ export default function PostForm({ onPostSubmit, onCategoryChange }) {
             </div>
           </div>
 
-          <div className="flex gap-2 justify-end mt-3 relative z-10">
+          <div className="flex flex-col sm:flex-row gap-2 justify-end mt-3 relative z-10">
             <button 
               type="button"
               onClick={() => setIsOpen(false)}

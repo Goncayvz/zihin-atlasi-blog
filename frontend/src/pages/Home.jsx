@@ -196,12 +196,12 @@ export default function Home() {
         {Animasyon && <Animasyon />}
       </div>
 
-      <div className="relative max-w-2xl mx-auto pt-8 pb-8 px-4" style={{ zIndex: 10 }}>
-        <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-md border border-purple-100 mb-6">
+      <div className="relative max-w-2xl mx-auto pt-6 sm:pt-8 pb-8 px-3 sm:px-4" style={{ zIndex: 10 }}>
+        <div className="bg-white/80 backdrop-blur-sm p-4 sm:p-6 rounded-2xl shadow-md border border-purple-100 mb-4 sm:mb-6">
           <PostForm onPostSubmit={addPost} onCategoryChange={setAktifKategori} />
         </div>
 
-        <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-md border border-purple-100 mb-6">
+        <div className="bg-white/80 backdrop-blur-sm p-4 sm:p-6 rounded-2xl shadow-md border border-purple-100 mb-6">
           <h2 className="text-xl font-bold mb-4 text-purple-800">
             📝 Paylaşımlar
             {posts.length > 0 && <span className="text-sm font-normal text-purple-500 ml-2">({posts.length})</span>}
@@ -222,4 +222,3 @@ export default function Home() {
     </div>
   )
 }
-

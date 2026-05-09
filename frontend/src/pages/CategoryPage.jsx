@@ -229,15 +229,15 @@ export default function CategoryPage() {
       </div>
 
       {/* İçerik */}
-      <div className="relative z-10 max-w-2xl mx-auto pt-8 pb-8 px-4">
-        <div className={`bg-white/60 backdrop-blur-sm p-8 rounded-2xl shadow-md ${kategori.borderColor} border mb-6 text-center`}>
+      <div className="relative z-10 max-w-2xl mx-auto pt-6 sm:pt-8 pb-8 px-3 sm:px-4">
+        <div className={`bg-white/60 backdrop-blur-sm p-6 sm:p-8 rounded-2xl shadow-md ${kategori.borderColor} border mb-4 sm:mb-6 text-center`}>
           <span className="text-5xl mb-3 block">{kategori.icon}</span>
           <h1 className={`text-3xl font-bold ${kategori.textColor} mb-2`}>{kategori.ad}</h1>
           <p className="text-gray-500">{kategori.aciklama}</p>
         </div>
 
-        <div className={`bg-white/60 backdrop-blur-sm p-6 rounded-2xl shadow-md ${kategori.borderColor} border`}>
-          <div className="flex items-center justify-between mb-4">
+        <div className={`bg-white/60 backdrop-blur-sm p-4 sm:p-6 rounded-2xl shadow-md ${kategori.borderColor} border`}>
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
             <h2 className={`text-xl font-bold ${kategori.textColor}`}>📝 Paylaşımlar</h2>
             <Link to="/" className={`px-4 py-2 ${kategori.badgeBg} ${kategori.badgeText} rounded-xl font-medium hover:opacity-80 transition`}>
               🏠 Ana Sayfa
