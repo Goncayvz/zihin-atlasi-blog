@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 import axios from 'axios'
-import PostForm from '../components/PostForm'
-import PostList from '../components/PostList'
 import { KATEGORI_ANIMASYON } from '../components/CategoryAnimations'
 
 const API_BASE = 'http://localhost/zihin-atlasi-v2/backend'
