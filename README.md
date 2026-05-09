@@ -72,6 +72,7 @@ cd zihin-atlasi-v2
 ## 2. Backend Kurulumu
 
 Laragon üzerinde Apache ve MySQL servislerini başlat.
+XAMPP de kullanabirsiniz.
 
 ### Veritabanını oluştur
 
