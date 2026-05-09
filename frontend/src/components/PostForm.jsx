@@ -1,16 +1,42 @@
 import { useState } from 'react'
 
 const KATEGORILER = [
-  { id: 'saglikli-yasam', ad: '🌿 Sağlıklı Yaşam' },
-  { id: 'yararli-bilgiler', ad: '💡 Yararlı Bilgiler' },
-  { id: 'seyahat', ad: '✈️ Seyahat ve Kültür' },
-  { id: 'kaybolanlar', ad: '📜 Kaybolanlar ve Unutulanlar' },
+  { 
+    id: 'saglikli-yasam', 
+    ad: '🌿 Sağlıklı Yaşam', 
+    color: 'bg-green-100 text-green-700 border-green-300',
+    bgAnim: 'from-green-50 to-emerald-50',
+    emoji: '🍃'
+  },
+  { 
+    id: 'yararli-bilgiler', 
+    ad: '💡 Yararlı Bilgiler', 
+    color: 'bg-blue-100 text-blue-700 border-blue-300',
+    bgAnim: 'from-blue-50 to-sky-50',
+    emoji: '💡'
+  },
+  { 
+    id: 'seyahat', 
+    ad: '✈️ Seyahat ve Kültür', 
+    color: 'bg-orange-100 text-orange-700 border-orange-300',
+    bgAnim: 'from-sky-50 to-cyan-50',
+    emoji: '✈️'
+  },
+  { 
+    id: 'kaybolanlar', 
+    ad: '📜 Kaybolanlar ve Unutulanlar', 
+    color: 'bg-purple-100 text-purple-700 border-purple-300',
+    bgAnim: 'from-purple-50 to-violet-50',
+    emoji: '📜'
+  },
 ]
 
-export default function PostForm({ onPostSubmit }) {
+export default function PostForm({ onPostSubmit, onCategoryChange }) {
   const [content, setContent] = useState('')
   const [category, setCategory] = useState('yararli-bilgiler')
   const [isOpen, setIsOpen] = useState(false)
+
+  const seciliKategori = KATEGORILER.find(k => k.id === category)
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -18,46 +44,66 @@ export default function PostForm({ onPostSubmit }) {
       onPostSubmit(content, category)
       setContent('')
       setCategory('yararli-bilgiler')
+      if (onCategoryChange) onCategoryChange('yararli-bilgiler')
       setIsOpen(false)
     }
   }
 
   return (
-    <div>
+    <div className="relative">
       {!isOpen ? (
         <button 
-          onClick={() => setIsOpen(true)}
+          onClick={() => {
+            setIsOpen(true)
+            if (onCategoryChange) onCategoryChange(category)
+          }}
           className="flex items-center gap-2 text-purple-600 hover:text-purple-800 font-medium transition"
         >
           <span className="text-2xl">🖊️</span>
           <span>Bugün ne paylaşmak istersiniz?</span>
         </button>
       ) : (
-        <form onSubmit={handleSubmit} className="bg-purple-50 p-4 rounded-xl">
+        <form onSubmit={handleSubmit} className={`bg-gradient-to-br ${seciliKategori.bgAnim} p-4 rounded-xl border ${seciliKategori.color.split(' ')[2]} relative overflow-hidden transition-all duration-500`}>
+          <div className="absolute -top-2 -right-2 text-4xl opacity-20 animate-bounce-slow">
+            {seciliKategori.emoji}
+          </div>
+          <div className="absolute -bottom-2 -left-2 text-3xl opacity-10 animate-pulse">
+            {seciliKategori.emoji}
+          </div>
+          
           <textarea 
             value={content}
             onChange={(e) => setContent(e.target.value)}
             placeholder="Düşüncelerinizi yazın..."
-            className="w-full p-3 rounded-xl border border-purple-200 bg-white resize-none focus:outline-none focus:ring-2 focus:ring-purple-400 transition text-gray-700"
+            className="w-full p-3 rounded-xl border border-purple-200 bg-white/80 resize-none focus:outline-none focus:ring-2 focus:ring-purple-400 transition text-gray-700 relative z-10"
             rows="3"
             autoFocus
           />
           
-          {/* Kategori Seçimi */}
-          <div className="mt-2">
-            <label className="text-sm text-purple-700 font-medium">Kategori:</label>
-            <select 
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-              className="w-full p-2 mt-1 rounded-lg border border-purple-200 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-400"
-            >
+          <div className="mt-3 relative z-10">
+            <label className="text-sm text-purple-700 font-medium mb-2 block">Kategori seçin:</label>
+            <div className="grid grid-cols-2 gap-2">
               {KATEGORILER.map(kat => (
-                <option key={kat.id} value={kat.id}>{kat.ad}</option>
+                <button
+                  key={kat.id}
+                  type="button"
+                  onClick={() => {
+                    setCategory(kat.id)
+                    if (onCategoryChange) onCategoryChange(kat.id)
+                  }}
+                  className={`text-sm px-3 py-2 rounded-lg border transition text-left ${
+                    category === kat.id 
+                      ? kat.color + ' shadow-sm scale-105' 
+                      : 'bg-white text-gray-500 border-gray-200 hover:border-gray-300'
+                  }`}
+                >
+                  {kat.ad}
+                </button>
               ))}
-            </select>
+            </div>
           </div>
 
-          <div className="flex gap-2 justify-end mt-3">
+          <div className="flex gap-2 justify-end mt-3 relative z-10">
             <button 
               type="button"
               onClick={() => setIsOpen(false)}
@@ -74,6 +120,16 @@ export default function PostForm({ onPostSubmit }) {
           </div>
         </form>
       )}
+      
+      <style>{`
+        @keyframes bounce-slow {
+          0%, 100% { transform: translateY(0) rotate(0deg); }
+          50% { transform: translateY(-10px) rotate(10deg); }
+        }
+        .animate-bounce-slow {
+          animation: bounce-slow 3s ease-in-out infinite;
+        }
+      `}</style>
     </div>
   )
 }
