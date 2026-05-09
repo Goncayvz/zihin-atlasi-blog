@@ -1,14 +1,23 @@
 import { useState } from 'react'
 
+const KATEGORILER = [
+  { id: 'saglikli-yasam', ad: '🌿 Sağlıklı Yaşam' },
+  { id: 'yararli-bilgiler', ad: '💡 Yararlı Bilgiler' },
+  { id: 'seyahat', ad: '✈️ Seyahat ve Kültür' },
+  { id: 'kaybolanlar', ad: '📜 Kaybolanlar ve Unutulanlar' },
+]
+
 export default function PostForm({ onPostSubmit }) {
   const [content, setContent] = useState('')
+  const [category, setCategory] = useState('yararli-bilgiler')
   const [isOpen, setIsOpen] = useState(false)
 
   const handleSubmit = (e) => {
     e.preventDefault()
     if (content.trim()) {
-      onPostSubmit(content)
+      onPostSubmit(content, category)
       setContent('')
+      setCategory('yararli-bilgiler')
       setIsOpen(false)
     }
   }
@@ -33,7 +42,22 @@ export default function PostForm({ onPostSubmit }) {
             rows="3"
             autoFocus
           />
-          <div className="flex gap-2 justify-end mt-2">
+          
+          {/* Kategori Seçimi */}
+          <div className="mt-2">
+            <label className="text-sm text-purple-700 font-medium">Kategori:</label>
+            <select 
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              className="w-full p-2 mt-1 rounded-lg border border-purple-200 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-400"
+            >
+              {KATEGORILER.map(kat => (
+                <option key={kat.id} value={kat.id}>{kat.ad}</option>
+              ))}
+            </select>
+          </div>
+
+          <div className="flex gap-2 justify-end mt-3">
             <button 
               type="button"
               onClick={() => setIsOpen(false)}

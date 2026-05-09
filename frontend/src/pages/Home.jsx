@@ -10,10 +10,11 @@ export default function Home() {
   const [comments, setComments] = useState([])
 
   // POST İŞLEMLERİ
-  const addPost = (content) => {
+  const addPost = (content, category) => {
     const newPost = {
       id: Date.now(),
       content,
+      category,
       likes: 0,
       createdAt: new Date().toISOString()
     }
