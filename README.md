@@ -169,21 +169,42 @@ http://localhost:5173
 ## Ana Sayfa
 
 ```md
-![Home](docs/screenshots/home.png)
+<img width="1911" height="867" alt="image" src="https://github.com/user-attachments/assets/b593f53e-331f-43e8-93a4-764b52db9db3" />
+
 ```
 
-## Kategori Sayfası
-
+## Kategori Sayfaları
+Seyahat ve kültür
 ```md
-![Category](docs/screenshots/category.png)
+<img width="1917" height="857" alt="image" src="https://github.com/user-attachments/assets/7aef0a02-2d19-4cd1-bfb2-e4777f5d7ff3" />
+
+```
+Kaybolanlar ve Unutulanlar 
+```md
+<img width="1918" height="862" alt="image" src="https://github.com/user-attachments/assets/04b2eaab-11bf-439d-9558-f6fbe08e9e85" />
+
+```
+Sağlıklı Yaşam
+```md
+<img width="1918" height="858" alt="image" src="https://github.com/user-attachments/assets/715a8cd8-491d-4f68-884b-7a57105b3e11" />
+```
+Yararlı Bilgiler
+```md
+<img width="1902" height="870" alt="image" src="https://github.com/user-attachments/assets/77711127-d090-4271-96f5-b722530ca650" />
+
 ```
 
 ## Giriş Sayfası
 
 ```md
-![Login](docs/screenshots/auth.png)
-```
+<img width="1600" height="702" alt="image" src="https://github.com/user-attachments/assets/e7df6ede-336c-402b-8f5d-fb66fc0240e8" />
 
+```
+## Kayıt Ol sayfası 
+```md
+<img width="1600" height="728" alt="image" src="https://github.com/user-attachments/assets/5c45304d-876d-43fe-83ce-076abac58dd6" />
+
+```
 ---
 
 # 👩‍💻 Geliştirici
